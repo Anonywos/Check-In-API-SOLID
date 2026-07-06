@@ -1,0 +1,16 @@
+services:
+  api-solid-pg:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=apisolid
+    volumes:
+      - api-solid-pg-data:/bitnami/postgresql
+
+volumes:
+  api-solid-pg-data:

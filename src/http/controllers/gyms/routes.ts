@@ -1,0 +1,16 @@
+import { verifyJWT } from '@/http/middlewares/verify-jwt.js'
+import { verifyUserRole } from '@/http/middlewares/verify-user-role.js'
+import type { FastifyInstance } from 'fastify'
+import { create } from './create.js'
+import { nearby } from './nearby.js'
+import { search } from './search.js'
+
+
+export async function gymRoutes(app:FastifyInstance) {
+	app.addHook('onRequest', verifyJWT)
+
+	app.post('/gyms', {onRequest: [verifyUserRole('ADMIN')]}, create)
+
+	app.get('/gyms/search', search)
+	app.get('/gyms/nearby', nearby)
+} 
