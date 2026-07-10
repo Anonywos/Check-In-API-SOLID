@@ -157,3 +157,51 @@ Example: /check-ins/history?page=1
 * Requires authentication *
 
 GET /check-ins/metrics
+
+## ⚙️ How to run
+
+```bash
+git clone https://github.com/Anonywos/Check-In-API-SOLID.git
+cd Check-In-API-SOLID
+npm install
+```
+
+Create a .env file based on .env.example file.
+
+### Start the database
+
+```bash
+docker compose up -d
+```
+
+### Run database migrations and generate Prisma Client
+```bash
+npx prisma migrate dev
+npx prisma generate
+```
+
+### Start the application
+
+```bash
+npm run dev
+```
+
+## 🧪 Running tests
+
+### Run unit tests
+
+```bash
+npm run test
+```
+
+### Run e2e tests
+
+```bash
+npm run test:e2e
+```
+
+### Run test coverage 
+
+```bash
+npm run test:coverage
+```
